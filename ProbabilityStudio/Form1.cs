@@ -4,7 +4,7 @@ namespace ProbabilityStudio
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); //ok
         }
     }
 }
