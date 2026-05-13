@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProbabilityStudio.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,7 @@ namespace ProbabilityStudio
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+                
         }
     }
 }

@@ -1,3 +1,5 @@
+using ProbabilityStudio.Models;
+
 namespace ProbabilityStudio
 {
     public partial class Form1 : Form
@@ -14,6 +16,11 @@ namespace ProbabilityStudio
                 CoinForm coinForm = new CoinForm();
                 coinForm.Show();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
