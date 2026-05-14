@@ -16,6 +16,11 @@ namespace ProbabilityStudio
                 CoinForm coinForm = new CoinForm();
                 coinForm.Show();
             }
+            else if (experimentChoicer.SelectedItem == "Dice")
+            {
+                DiceForm diceForm = new DiceForm();
+                diceForm.Show();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
