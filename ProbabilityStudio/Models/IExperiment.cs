@@ -8,8 +8,8 @@ namespace ProbabilityStudio.Models
 {
     public interface IExperiment
     {
-        decimal CalculateProbability(int trialCount);
+        double CalculateProbability();
 
-        SimulationResult Simulate(int trialCount);
+        SimulationResult Simulate();
     }
 }

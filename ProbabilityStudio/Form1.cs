@@ -4,6 +4,8 @@ namespace ProbabilityStudio
 {
     public partial class Form1 : Form
     {
+        IExperiment Experiment;
+
         public Form1()
         {
             InitializeComponent(); //ok
@@ -19,13 +21,13 @@ namespace ProbabilityStudio
             else if (experimentChoicer.SelectedItem == "Dice")
             {
                 DiceForm diceForm = new DiceForm();
-                diceForm.Show();
+                diceForm.ShowDialog();
+                Experiment = diceForm.Experiment;
+                mathResultLabel.Text = $"{Experiment.CalculateProbability()}";
+
+                SimulationResult simulationResult = Experiment.Simulate();
+                simulationLabel.Text = $"{(decimal)simulationResult.SuccessfulTrials/simulationResult.TrialCount}";
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

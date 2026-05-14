@@ -158,6 +158,7 @@
             saveButton.TabIndex = 5;
             saveButton.Text = "Запази данните";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // trialCountNumericUpDown
             // 

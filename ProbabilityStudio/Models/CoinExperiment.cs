@@ -15,12 +15,12 @@ namespace ProbabilityStudio.Models
 
         public string SearchedSide { get; set; }
 
-        public decimal CalculateProbability(int trialCount)
+        public double CalculateProbability()
         {
             throw new NotImplementedException();
         }
 
-        public SimulationResult Simulate(int trialCount)
+        public SimulationResult Simulate()
         {
             throw new NotImplementedException();
         }
