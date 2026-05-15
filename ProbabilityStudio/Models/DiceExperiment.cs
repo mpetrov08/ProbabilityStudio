@@ -46,14 +46,20 @@ namespace ProbabilityStudio.Models
             {
                 for (int i = 0; i < 100_000; i++)
                 {
-                    for(int j = 0; j < TrialCount; j++)
+                    bool isSuccessed = true;
+                    for (int j = 0; j < TrialCount; j++)
                     {
                         int result = rnd.Next(1, 7);
-                        if (result == SearchedValue)
+                        if (result != SearchedValue)
                         {
-                            successCount++;
+                            isSuccessed = false;
                             break;
                         }
+                    }
+
+                    if (isSuccessed)
+                    {
+                        successCount++;
                     }
                 }
             }
