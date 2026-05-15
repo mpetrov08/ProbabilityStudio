@@ -31,11 +31,14 @@
             openFileButton = new Button();
             fileContentTextBox = new TextBox();
             openFileDialog1 = new OpenFileDialog();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox3 = new TextBox();
-            button2 = new Button();
+            searchedLetterTextBox = new TextBox();
+            trialsCountLabel = new Label();
+            saveButton = new Button();
             searchLetterLabel = new Label();
+            trialsCountNumericUpDown = new NumericUpDown();
+            caseInsensitiveCheckBox = new CheckBox();
+            withoutPunctuationCheckBox = new CheckBox();
+            ((System.ComponentModel.ISupportInitialize)trialsCountNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // openFileButton
@@ -46,6 +49,7 @@
             openFileButton.TabIndex = 0;
             openFileButton.Text = "Зареди файл";
             openFileButton.UseVisualStyleBackColor = true;
+            openFileButton.Click += openFileButton_Click;
             // 
             // fileContentTextBox
             // 
@@ -59,38 +63,32 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
-            // textBox2
+            // searchedLetterTextBox
             // 
-            textBox2.Location = new Point(179, 284);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(118, 23);
-            textBox2.TabIndex = 3;
+            searchedLetterTextBox.Location = new Point(179, 284);
+            searchedLetterTextBox.Name = "searchedLetterTextBox";
+            searchedLetterTextBox.Size = new Size(118, 23);
+            searchedLetterTextBox.TabIndex = 3;
             // 
-            // label2
+            // trialsCountLabel
             // 
-            label2.AutoSize = true;
-            label2.CausesValidation = false;
-            label2.Location = new Point(318, 291);
-            label2.Name = "label2";
-            label2.Size = new Size(139, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Въведете брой тегления";
+            trialsCountLabel.AutoSize = true;
+            trialsCountLabel.CausesValidation = false;
+            trialsCountLabel.Location = new Point(318, 291);
+            trialsCountLabel.Name = "trialsCountLabel";
+            trialsCountLabel.Size = new Size(139, 15);
+            trialsCountLabel.TabIndex = 4;
+            trialsCountLabel.Text = "Въведете брой тегления";
             // 
-            // textBox3
+            // saveButton
             // 
-            textBox3.Location = new Point(463, 283);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(124, 23);
-            textBox3.TabIndex = 5;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(612, 282);
-            button2.Name = "button2";
-            button2.Size = new Size(163, 25);
-            button2.TabIndex = 6;
-            button2.Text = "Запази данните";
-            button2.UseVisualStyleBackColor = true;
+            saveButton.Location = new Point(612, 282);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(163, 25);
+            saveButton.TabIndex = 6;
+            saveButton.Text = "Запази данните";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // searchLetterLabel
             // 
@@ -101,20 +99,52 @@
             searchLetterLabel.TabIndex = 7;
             searchLetterLabel.Text = "Въведете търсената буква";
             // 
+            // trialsCountNumericUpDown
+            // 
+            trialsCountNumericUpDown.Location = new Point(476, 283);
+            trialsCountNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            trialsCountNumericUpDown.Name = "trialsCountNumericUpDown";
+            trialsCountNumericUpDown.Size = new Size(120, 23);
+            trialsCountNumericUpDown.TabIndex = 8;
+            trialsCountNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // caseInsensitiveCheckBox
+            // 
+            caseInsensitiveCheckBox.AutoSize = true;
+            caseInsensitiveCheckBox.Location = new Point(25, 357);
+            caseInsensitiveCheckBox.Name = "caseInsensitiveCheckBox";
+            caseInsensitiveCheckBox.Size = new Size(281, 19);
+            caseInsensitiveCheckBox.TabIndex = 9;
+            caseInsensitiveCheckBox.Text = "Да няма значения малки или големи букви са";
+            caseInsensitiveCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // withoutPunctuationCheckBox
+            // 
+            withoutPunctuationCheckBox.AutoSize = true;
+            withoutPunctuationCheckBox.Location = new Point(347, 357);
+            withoutPunctuationCheckBox.Name = "withoutPunctuationCheckBox";
+            withoutPunctuationCheckBox.Size = new Size(365, 19);
+            withoutPunctuationCheckBox.TabIndex = 10;
+            withoutPunctuationCheckBox.Text = "Да не се зачитат пунктуационни знации празни пространства";
+            withoutPunctuationCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LetterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 343);
+            ClientSize = new Size(800, 465);
+            Controls.Add(withoutPunctuationCheckBox);
+            Controls.Add(caseInsensitiveCheckBox);
+            Controls.Add(trialsCountNumericUpDown);
             Controls.Add(searchLetterLabel);
-            Controls.Add(button2);
-            Controls.Add(textBox3);
-            Controls.Add(label2);
-            Controls.Add(textBox2);
+            Controls.Add(saveButton);
+            Controls.Add(trialsCountLabel);
+            Controls.Add(searchedLetterTextBox);
             Controls.Add(fileContentTextBox);
             Controls.Add(openFileButton);
             Name = "LetterForm";
             Text = "LetterForm";
+            ((System.ComponentModel.ISupportInitialize)trialsCountNumericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -124,10 +154,12 @@
         private Button openFileButton;
         private TextBox fileContentTextBox;
         private OpenFileDialog openFileDialog1;
-        private TextBox textBox2;
-        private Label label2;
-        private TextBox textBox3;
-        private Button button2;
+        private TextBox searchedLetterTextBox;
+        private Label trialsCountLabel;
+        private Button saveButton;
         private Label searchLetterLabel;
+        private NumericUpDown trialsCountNumericUpDown;
+        private CheckBox caseInsensitiveCheckBox;
+        private CheckBox withoutPunctuationCheckBox;
     }
 }

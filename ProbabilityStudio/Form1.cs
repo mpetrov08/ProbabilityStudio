@@ -10,7 +10,7 @@ namespace ProbabilityStudio
         {
             InitializeComponent(); //ok
         }
-
+        
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (experimentChoicer.SelectedItem == "Coin")
@@ -37,6 +37,15 @@ namespace ProbabilityStudio
             {
                 LetterForm letterForm = new LetterForm();
                 letterForm.ShowDialog();
+
+                if (letterForm.Experiment != null)
+                {
+                    Experiment = letterForm.Experiment;
+                    mathResultLabel.Text = $"{Experiment.CalculateProbability()}";
+
+                    SimulationResult simulationResult = Experiment.Simulate();
+                    simulationLabel.Text = $"{(decimal)simulationResult.SuccessfulTrials / simulationResult.TrialCount}";
+                }
             }
         }
     }
