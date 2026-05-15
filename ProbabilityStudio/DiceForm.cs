@@ -35,33 +35,46 @@ namespace ProbabilityStudio
             searchedSumNumericUpDown.Visible = true;
 
             searchedNumberGroupBox.Visible = false;
-
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            int searchedValue = 0;
-            DiceSearchType diceSearchType;
+            int trialCount = (int)trialCountNumericUpDown.Value;
 
+            int searchedValue = 0;
             if (numberOptionRadioButton.Checked)
             {
-                diceSearchType = DiceSearchType.ExactValue;
                 if (side1RadionButton.Checked) searchedValue = 1;
                 else if (side2RadioButton.Checked) searchedValue = 2;
                 else if (side3RadioButton.Checked) searchedValue = 3;
                 else if (side4RadioButton.Checked) searchedValue = 4;
                 else if (side5RadioButton.Checked) searchedValue = 5;
                 else if (side6RadioButton.Checked) searchedValue = 6;
+                else
+                {
+                    MessageBox.Show("Изберете число!", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Experiment = new DiceExperiment(DiceSearchType.ExactValue, searchedValue, trialCount);
+            }
+            else if(sumOptionRadioButton.Checked)
+            {
+                searchedValue = (int)searchedSumNumericUpDown.Value;
+
+                if (searchedValue < trialCount || searchedValue > trialCount * 6)
+                {
+                    MessageBox.Show("Не е възможно да се получи тази сума при хвърлянията!", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Experiment = new DiceExperiment(DiceSearchType.Sum, searchedValue, trialCount);
             }
             else
             {
-                diceSearchType = DiceSearchType.Sum;
-                searchedValue = (int)searchedSumNumericUpDown.Value;
+                MessageBox.Show("Изберете критерий!", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            int trialCount = (int)trialCountNumericUpDown.Value;
-
-            Experiment = new DiceExperiment(diceSearchType, searchedValue, trialCount);
             this.Close();
         }
     }

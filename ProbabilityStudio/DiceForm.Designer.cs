@@ -163,9 +163,11 @@
             // trialCountNumericUpDown
             // 
             trialCountNumericUpDown.Location = new Point(24, 153);
+            trialCountNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             trialCountNumericUpDown.Name = "trialCountNumericUpDown";
             trialCountNumericUpDown.Size = new Size(120, 23);
             trialCountNumericUpDown.TabIndex = 7;
+            trialCountNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // searchCriteriaGroupBox
             // 
@@ -205,9 +207,11 @@
             // searchedSumNumericUpDown
             // 
             searchedSumNumericUpDown.Location = new Point(258, 34);
+            searchedSumNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             searchedSumNumericUpDown.Name = "searchedSumNumericUpDown";
             searchedSumNumericUpDown.Size = new Size(120, 23);
             searchedSumNumericUpDown.TabIndex = 9;
+            searchedSumNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
             searchedSumNumericUpDown.Visible = false;
             // 
             // DiceForm

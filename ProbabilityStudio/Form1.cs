@@ -22,11 +22,16 @@ namespace ProbabilityStudio
             {
                 DiceForm diceForm = new DiceForm();
                 diceForm.ShowDialog();
-                Experiment = diceForm.Experiment;
-                mathResultLabel.Text = $"{Experiment.CalculateProbability()}";
 
-                SimulationResult simulationResult = Experiment.Simulate();
-                simulationLabel.Text = $"{(decimal)simulationResult.SuccessfulTrials/simulationResult.TrialCount}";
+                if (diceForm.Experiment != null)
+                {
+                    Experiment = diceForm.Experiment;
+
+                    mathResultLabel.Text = $"{Experiment.CalculateProbability()}";
+
+                    SimulationResult simulationResult = Experiment.Simulate();
+                    simulationLabel.Text = $"{(decimal)simulationResult.SuccessfulTrials / simulationResult.TrialCount}";
+                }
             }
         }
     }
