@@ -39,7 +39,7 @@
             // 
             experimentChoicer.FormattingEnabled = true;
             experimentChoicer.ItemHeight = 15;
-            experimentChoicer.Items.AddRange(new object[] { "Coin", "Dice" });
+            experimentChoicer.Items.AddRange(new object[] { "Coin", "Dice", "Letter" });
             experimentChoicer.Location = new Point(12, 39);
             experimentChoicer.Name = "experimentChoicer";
             experimentChoicer.Size = new Size(151, 109);

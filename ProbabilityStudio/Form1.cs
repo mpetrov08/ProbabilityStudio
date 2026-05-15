@@ -33,6 +33,11 @@ namespace ProbabilityStudio
                     simulationLabel.Text = $"{(decimal)simulationResult.SuccessfulTrials / simulationResult.TrialCount}";
                 }
             }
+            else if (experimentChoicer.SelectedItem == "Letter")
+            {
+                LetterForm letterForm = new LetterForm();
+                letterForm.ShowDialog();
+            }
         }
     }
 }
